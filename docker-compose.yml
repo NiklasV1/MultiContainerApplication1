@@ -8,3 +8,16 @@ services:
       dockerfile: Dockerfile
     ports:
       - 80:80
+
+  mysql-database:
+    image: mysql:8.0.40-bookworm
+    container_name: todolist-mysql-database
+    volumes:
+      - todolist-mysql-data:/var/lib/mysql
+    env_file:
+      - ./Database/database.env
+    ports:
+      - 3306:3306
+
+volumes:
+  todolist-mysql-data:
