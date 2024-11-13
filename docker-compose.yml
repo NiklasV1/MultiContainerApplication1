@@ -1,6 +1,7 @@
 services:
   frontend:
     image: todolist-frontend
+    pull_policy: never
     container_name: todolist-frontend
     build:
       context: ./Frontend
