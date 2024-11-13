@@ -19,5 +19,15 @@ services:
     ports:
       - 3306:3306
 
+  backend:
+    image: todolist-backend
+    pull_policy: never
+    container_name: todolist-backend
+    build:
+      context: ./Backend/backend-service
+      dockerfile: ./src/main/docker/Dockerfile.jvm
+    ports:
+      - 8080:8080
+
 volumes:
   todolist-mysql-data:
