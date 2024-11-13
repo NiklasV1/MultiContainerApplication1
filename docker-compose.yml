@@ -1,0 +1,9 @@
+services:
+  frontend:
+    image: todolist-frontend
+    container_name: todolist-frontend
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
