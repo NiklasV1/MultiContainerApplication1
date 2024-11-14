@@ -1,14 +1,24 @@
 package org.niklasv1.app.model;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.UUID;
 
 @Entity
 @Table(name = "todos")
-public class Todo extends PanacheEntity {
-    public Long id;
+public class Todo {
+
+    @Id
+    @GeneratedValue
+    public UUID id;
+
     @Column(nullable = false, length = 2000)
     public String text;
+
+    public Todo() {
+    }
+
+    public Todo(String text) {
+        this.text = text;
+    }
 }
