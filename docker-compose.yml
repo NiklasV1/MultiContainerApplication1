@@ -9,15 +9,19 @@ services:
     ports:
       - 80:80
 
-  mysql-database:
-    image: mysql:8.0.40-bookworm
-    container_name: todolist-mysql-database
+  postgres-database:
+    image: todolist-postgres-database
+    pull_policy: never
+    container_name: todolist-postgres-database
+    build:
+      context: ./Database
+      dockerfile: Dockerfile
     volumes:
-      - todolist-mysql-data:/var/lib/mysql
+      - todolist-postgres-data:/var/lib/postgresql/data
     env_file:
       - ./Database/database.env
     ports:
-      - 3306:3306
+      - 5432:5432
 
   backend:
     image: todolist-backend
@@ -30,4 +34,4 @@ services:
       - 8080:8080
 
 volumes:
-  todolist-mysql-data:
+  todolist-postgres-data:
