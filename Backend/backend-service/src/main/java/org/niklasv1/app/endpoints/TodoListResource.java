@@ -29,4 +29,10 @@ public class TodoListResource {
         return todoManager.getTodos();
     }
 
+    @GET
+    @Path("/addTodo/{text}")
+    public UUID addTodo(String text) {
+        return todoManager.addTodo(text);
+    }
+
 }

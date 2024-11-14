@@ -16,10 +16,6 @@ public class TodoManager {
     @Inject
     TodoRepository todoRepository;
 
-    public String test() {
-        return "test";
-    }
-
     public Todo getTodo(UUID id) {
         return todoRepository.findById(id);
     }
