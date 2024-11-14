@@ -13,4 +13,8 @@ public class Todo extends PanacheEntity {
     private int id;
     @Column(nullable = false, length = 2000)
     private String text;
+
+    public String getText() {
+        return text;
+    }
 }
