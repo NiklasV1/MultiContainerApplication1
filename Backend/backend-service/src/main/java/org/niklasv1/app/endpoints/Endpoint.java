@@ -30,8 +30,4 @@ public class Endpoint {
         }
         return returnString.toString();
     }
-
-
-
-
 }
