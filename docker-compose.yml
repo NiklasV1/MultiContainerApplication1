@@ -8,8 +8,25 @@ services:
       dockerfile: Dockerfile
     ports:
       - 80:80
+    networks:
+      - frontend-network
 
-  postgres-database:
+  backend:
+    image: todolist-backend
+    pull_policy: never
+    container_name: todolist-backend
+    build:
+      context: ./Backend/backend-service
+      dockerfile: ./src/main/docker/Dockerfile.jvm
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+    networks:
+      - frontend-network
+      - backend-network
+
+  database:
     image: todolist-postgres-database
     pull_policy: never
     container_name: todolist-postgres-database
@@ -22,18 +39,12 @@ services:
       - ./Database/database.env
     ports:
       - 5432:5432
-
-  backend:
-    image: todolist-backend
-    pull_policy: never
-    container_name: todolist-backend
-    build:
-      context: ./Backend/backend-service
-      dockerfile: ./src/main/docker/Dockerfile.jvm
-    ports:
-      - 8080:8080
-    depends_on:
-      - postgres-database
+    networks:
+      - backend-network
 
 volumes:
   todolist-postgres-data:
+
+networks:
+  frontend-network:
+  backend-network:

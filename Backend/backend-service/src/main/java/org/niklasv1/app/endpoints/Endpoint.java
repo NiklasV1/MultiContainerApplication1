@@ -26,10 +26,12 @@ public class Endpoint {
         StringBuilder returnString = new StringBuilder();
         List<Todo> todos = Todo.listAll();
         for (Todo todo : todos) {
-            returnString.append(todo.getText());
+            returnString.append(todo.text.strip()).append("\n");
         }
         return returnString.toString();
     }
+
+
 
 
 }
