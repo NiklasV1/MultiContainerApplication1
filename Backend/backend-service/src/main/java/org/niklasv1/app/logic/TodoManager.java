@@ -29,4 +29,8 @@ public class TodoManager {
         todoRepository.persist(todo);
         return todo.id;
     }
+
+    public boolean removeTodo(UUID id) {
+        return todoRepository.deleteById(id);
+    }
 }
