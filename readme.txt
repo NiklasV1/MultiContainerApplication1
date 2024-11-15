@@ -8,8 +8,6 @@ INSTALLATION:
 
 2. ./mvnw package
 
-3. cd back to the main folder
+3. docker compose build
 
-4. docker compose build
-
-5. docker compose up -d
+4. docker compose up -d
